@@ -1,9 +1,7 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-
-
   return (
     <>
       <header>
@@ -16,15 +14,17 @@ function App() {
         <div>
           <div>
             <h4>Monday June 10th</h4>
-              <ul>
-                <li>zone 1</li>
-              </ul>
+            <ul>
+              <li>zone 1</li>
+            </ul>
           </div>
         </div>
       </div>
       <div id="zones">
-        <h2>Zones:</h2>
-        <button>+</button>
+        <div className="flex flex-row">
+          <h2>Zones:</h2>
+          <button>+</button>
+        </div>
         <div>
           <img src="" alt="Warning" />
           <h4>Zone 1</h4>
@@ -32,7 +32,7 @@ function App() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
