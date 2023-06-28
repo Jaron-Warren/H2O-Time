@@ -5,11 +5,11 @@ function App() {
   return (
     <>
       <header>
-        <div>
+        <div className="grid-cols-1">
           <h1>H2O Time</h1>
         </div>
       </header>
-      <div id="schedule">
+      <div id="schedule" className="">
         <h2>Schedule:</h2>
         <div>
           <div>
