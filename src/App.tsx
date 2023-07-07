@@ -16,11 +16,13 @@ function App() {
           <h2 className="font-bold">Schedule:</h2>
         </div>
         <div className="grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
-          <div className="flex flex-row">
-            <h4>Monday June 10th</h4>
-            <ul>
-              <li>zone 1</li>
-            </ul>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            <div className="m-2 rounded-md border-2 border-slate-800 bg-slate-300 p-2">
+              <h4 className="text-center underline">Monday June 10th</h4>
+              <ul className="list-inside list-disc">
+                <li className="italic">zone 1</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div id="zones">
