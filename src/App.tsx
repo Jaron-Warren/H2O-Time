@@ -4,8 +4,8 @@ import "./App.css";
 function App() {
   return (
     <>
-      <div className="mx-1 my-3 flex min-h-screen flex-col gap-2 px-2">
-        <header>
+      <div className="mx-1 flex max-h-screen min-h-screen flex-col gap-2 px-2">
+        <header className="mt-3">
           <div className="rounded-md bg-slate-900 p-2">
             <h1 className="text-center text-lg font-extrabold text-sky-700 underline decoration-wavy">
               H2O Time
@@ -31,7 +31,7 @@ function App() {
             </button>
           </div>
         </div>
-        <div className="grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
+        <div className="mb-3 grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="flex flex-row">
             <img src="" alt="Warning" />
             <h4>Zone 1</h4>
