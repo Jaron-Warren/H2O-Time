@@ -6,8 +6,8 @@ function App() {
     <>
       <div className="mx-1 flex max-h-screen min-h-screen flex-col gap-2 px-2">
         <header className="mt-3">
-          <div className="rounded-md bg-slate-900 p-2">
-            <h1 className="text-center text-lg font-extrabold text-sky-700 underline decoration-wavy">
+          <div className="mx-12 rounded-md bg-slate-500 p-2">
+            <h1 className="text-center text-lg font-extrabold text-sky-400 underline decoration-wavy">
               H2O Time
             </h1>
           </div>
@@ -16,13 +16,13 @@ function App() {
           <h2 className="font-bold">Schedule:</h2>
         </div>
         <div className="grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
-          <div className="background grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             <div className="m-2 rounded-md border-2 border-slate-800 bg-slate-300 p-2">
               <h4 className="text-center underline">Monday June 10th</h4>
               <ul className="list-inside list-disc py-1">
                 <li className="italic">
                   zone 1{" "}
-                  <span className="float-right border border-slate-600 bg-slate-400 px-1">
+                  <span className="float-right cursor-pointer border border-slate-600 bg-slate-400 px-1">
                     <svg
                       fill="none"
                       viewBox="0 0 24 24"
@@ -46,7 +46,7 @@ function App() {
         <div id="zones">
           <div className="flex flex-row">
             <h2 className="mr-4 font-bold">Zones:</h2>
-            <button className="rounded-md border-2 border-slate-900 bg-red-600 px-1.5 pb-1 font-bold leading-3">
+            <button className="rounded-md border-2 border-slate-900 bg-green-600 px-1.5 pb-1 font-bold leading-3">
               +
             </button>
           </div>
@@ -59,7 +59,7 @@ function App() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="h-6 w-6"
+                className="h-6 w-6 cursor-help"
                 data-name="warning"
               >
                 <path
@@ -76,25 +76,8 @@ function App() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                />
-              </svg>
-            </div>
-            <div className="flex flex-row justify-evenly border-b-2 border-slate-600 p-1">
-              <h4>Zone 1</h4>
-              <span>every 3 days</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-6 w-6"
+                className="h-6 w-6 cursor-pointer"
+                data-name="edit"
               >
                 <path
                   strokeLinecap="round"
