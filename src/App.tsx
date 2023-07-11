@@ -13,14 +13,14 @@ function App() {
           </div>
         </header>
         <div id="schedule">
-          <h2 className="font-bold">Schedule:</h2>
+          <span className="whiteShadow font-bold">Schedule:</span>
         </div>
         <div className="grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"></div>
         </div>
         <div id="zones">
           <div className="flex flex-row">
-            <h2 className="mr-4 font-bold">Zones:</h2>
+            <span className="whiteShadow mr-4 font-bold">Zones:</span>
             <button className="rounded-md border-2 border-slate-900 bg-green-600 px-1.5 pb-1 font-bold leading-3">
               +
             </button>
