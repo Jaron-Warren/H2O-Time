@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./componentSchedule.css";
 
-function App() {
+export function componentSchedule() {
   return (
     <>
       <div className="m-2 rounded-md border-2 border-slate-800 bg-slate-300 p-2">
@@ -31,5 +31,3 @@ function App() {
     </>
   );
 }
-
-export default App;

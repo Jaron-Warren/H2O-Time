@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./componentZone.css";
 
-function App() {
+export function componentZone() {
   return (
     <>
       <div className="flex flex-row justify-evenly border-b-2 border-slate-600 p-1">
@@ -40,5 +40,3 @@ function App() {
     </>
   );
 }
-
-export default App;

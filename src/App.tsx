@@ -2,6 +2,11 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+  function addZone() {
+    const addButton = document.getElementById("zoneModal") as HTMLDialogElement;
+    addButton.showModal();
+  }
+
   return (
     <>
       <div className="mx-1 flex max-h-screen min-h-screen flex-col gap-2 px-2">
@@ -18,10 +23,16 @@ function App() {
         <div className="grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"></div>
         </div>
+        <dialog id="zoneModal">
+          <span>this is a dialog</span>
+        </dialog>
         <div id="zones">
           <div className="flex flex-row">
             <span className="whiteShadow mr-4 font-bold">Zones:</span>
-            <button className="rounded-md border-2 border-slate-900 bg-green-600 px-1.5 pb-1 font-bold leading-3">
+            <button
+              onClick={() => addZone()}
+              className="rounded-md border-2 border-slate-900 bg-green-600 px-1.5 pb-1 font-bold leading-3"
+            >
               +
             </button>
           </div>
