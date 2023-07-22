@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { useRef } from "react";
 import "./App.css";
 
 function App() {
+  let dialog = useRef<HTMLDialogElement>(null);
+
   function addZone() {
-    const addButton = document.getElementById("zoneModal") as HTMLDialogElement;
-    addButton.showModal();
+    // const dialog = document.getElementById("zoneModal") as HTMLDialogElement;
+    dialog.current?.showModal();
+  }
+
+  function closeModal() {
+    // const dialog = document.getElementById("zoneModal") as HTMLDialogElement;
+    dialog.current?.close();
+  }
+
+  function checkBounds(e: any) {
+    const dialogDimensions = dialog.current?.getBoundingClientRect();
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      dialog.current?.close();
+    }
   }
 
   return (
@@ -23,14 +42,24 @@ function App() {
         <div className="grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"></div>
         </div>
-        <dialog id="zoneModal">
+        <dialog
+          id="zoneModal"
+          ref={dialog}
+          onClick={(event) => checkBounds(event)}
+        >
+          <button
+            onClick={closeModal}
+            className="rounded-md border-2 border-slate-900 bg-red-500 px-1.5 pb-1 font-bold leading-3"
+          >
+            Close
+          </button>
           <span>this is a dialog</span>
         </dialog>
         <div id="zones">
           <div className="flex flex-row">
             <span className="whiteShadow mr-4 font-bold">Zones:</span>
             <button
-              onClick={() => addZone()}
+              onClick={addZone}
               className="rounded-md border-2 border-slate-900 bg-green-600 px-1.5 pb-1 font-bold leading-3"
             >
               +
