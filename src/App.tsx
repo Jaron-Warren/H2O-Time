@@ -1,4 +1,6 @@
 import "./App.css";
+import { ComponentSchedule } from "./componentSchedule";
+import { ComponentZone } from "./componentZone";
 import { ComponentZoneModal } from "./componentZoneModal";
 
 function App() {
@@ -16,7 +18,9 @@ function App() {
           <span className="whiteShadow font-bold">Schedule:</span>
         </div>
         <div className="grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"></div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            <ComponentSchedule />
+          </div>
         </div>
         <div id="zones">
           <div className="flex flex-row">
@@ -25,7 +29,9 @@ function App() {
           </div>
         </div>
         <div className="mb-3 grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
-          <div className="m-2 flex flex-col gap-y-3"></div>
+          <div className="m-2 flex flex-col gap-y-3">
+            <ComponentZone />
+          </div>
         </div>
       </div>
     </>
