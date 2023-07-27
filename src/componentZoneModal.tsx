@@ -42,7 +42,7 @@ export function ComponentZoneModal() {
         onClick={(event) => checkBounds(event)}
         className={`${dialogDisplay} flex-col justify-center gap-2`}
       >
-        <div className="font-bold">Name:</div>
+        <div className="font-bold">Zone name:</div>
         <input type="text" />
         <div className="font-bold">Frequency in days:</div>
         <input type="number" name="Frequency in days" min={1} max={365} />
