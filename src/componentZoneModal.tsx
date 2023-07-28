@@ -9,7 +9,7 @@ export function ComponentZoneModal() {
     dialog.current?.showModal();
   }
 
-  function saveModal() {
+  function createModal() {
     //TODO create modals in state
     dialog.current?.close();
     setdDisplay("");
@@ -53,10 +53,10 @@ export function ComponentZoneModal() {
         <div className="font-bold">Frequency in days:</div>
         <input type="number" name="Frequency in days" min={1} max={365} />
         <button
-          onClick={saveModal}
+          onClick={createModal}
           className="mx-4 rounded-md border-2 border-slate-900 bg-green-500 font-bold"
         >
-          Save
+          Create
         </button>
         <button
           onClick={closeModal}

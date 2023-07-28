@@ -1,7 +1,39 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./componentZone.css";
 
 export function ComponentZone() {
+  let dialog = useRef<HTMLDialogElement>(null);
+  const [dialogDisplay, setdDisplay] = useState("");
+
+  function showModal() {
+    setdDisplay("display: flex");
+    dialog.current?.showModal();
+  }
+
+  function saveModal() {
+    dialog.current?.close();
+    setdDisplay("");
+  }
+
+  function closeModal() {
+    // const dialog = document.getElementById("zoneModal") as HTMLDialogElement;
+    dialog.current?.close();
+    setdDisplay("");
+  }
+
+  function checkBounds(e: any) {
+    const dialogDimensions = dialog.current?.getBoundingClientRect();
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      dialog.current?.close();
+      setdDisplay("");
+    }
+  }
+
   return (
     <>
       <div className="flex flex-row justify-evenly border-b-2 border-slate-600 p-1">
@@ -27,6 +59,7 @@ export function ComponentZone() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
+          onClick={showModal}
           className="h-6 w-6 cursor-pointer"
           data-name="edit"
         >
@@ -37,6 +70,30 @@ export function ComponentZone() {
           />
         </svg>
       </div>
+      {/* edit dialog */}
+      <dialog
+        id="editModal"
+        ref={dialog}
+        onClick={(event) => checkBounds(event)}
+        className={`${dialogDisplay} flex-col justify-center gap-2`}
+      >
+        <div className="font-bold">Zone name:</div>
+        <input type="text" />
+        <div className="font-bold">Frequency in days:</div>
+        <input type="number" name="Frequency in days" min={1} max={365} />
+        <button
+          onClick={saveModal}
+          className="mx-4 rounded-md border-2 border-slate-900 bg-green-500 font-bold"
+        >
+          Save Changes
+        </button>
+        <button
+          onClick={closeModal}
+          className="mx-4 rounded-md border-2 border-slate-900 bg-red-500 font-bold"
+        >
+          Cancel
+        </button>
+      </dialog>
     </>
   );
 }
