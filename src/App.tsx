@@ -1,9 +1,41 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import { ComponentSchedule } from "./componentSchedule";
 import { ComponentZone } from "./componentZone";
 import { ComponentZoneModal } from "./componentZoneModal";
 
 function App() {
+  const [scheduleData, setScheduleData] = useState(() => {
+    const localValue = localStorage.getItem("SCHEDULEDATA");
+    if (localValue == null) return [];
+    return JSON.parse(localValue);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("SCHEDULEDATA", JSON.stringify(scheduleData));
+  }, [scheduleData]);
+
+  function addSchedule(title) {
+    setScheduleData((currentscheduleData) => {
+      return [
+        ...currentscheduleData,
+        { id: crypto.randomUUID(), title, completed: false },
+      ];
+    });
+  }
+
+  function toggleSchedule(id, completed) {
+    setScheduleData((currentscheduleData) => {
+      return currentscheduleData.map((Schedule) => {
+        if (Schedule.id === id) {
+          return { ...Schedule, completed };
+        }
+
+        return Schedule;
+      });
+    });
+  }
+
   return (
     <>
       <div className="mx-1 flex max-h-screen min-h-screen flex-col gap-2 px-2">
