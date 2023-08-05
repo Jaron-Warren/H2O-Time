@@ -3,11 +3,14 @@ import "./App.css";
 import { ComponentSchedule } from "./componentSchedule";
 import { ComponentZone } from "./componentZone";
 import { ComponentZoneModal } from "./componentZoneModal";
+import React from "react";
 
 function App() {
   const [zoneData, setZoneData] = useState(() => {
     const localValue = localStorage.getItem("ZoneData");
-    if (localValue == null) return [];
+    if (localValue == null) {
+      return [];
+    }
     return JSON.parse(localValue);
   });
 
@@ -83,12 +86,23 @@ function App() {
         <div id="zones">
           <div className="flex flex-row">
             <span className="whiteShadow mr-4 font-bold">Zones:</span>
-            <ComponentZoneModal />
+            <ComponentZoneModal addZone={addZone} />
           </div>
         </div>
         <div className="mb-3 grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="m-2 flex flex-col gap-y-3">
-            <ComponentZone />
+            {zoneData.length === 0 && <div>Create a zone to get started!</div>}
+            {zoneData.map((zone) => {
+              return (
+                <ComponentZone
+                  name={zone.name}
+                  frequency={zone.frequency}
+                  nextOccurance={zone.nextOccurance}
+                  scheduleMissed={zone.scheduleMissed}
+                  key={zone.id}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

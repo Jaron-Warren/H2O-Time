@@ -1,7 +1,13 @@
 import { useRef, useState } from "react";
 import "./componentZone.css";
+import React from "react";
 
-export function ComponentZone() {
+export function ComponentZone({
+  name,
+  frequency,
+  nextOccurance,
+  scheduleMissed,
+}) {
   let dialog = useRef<HTMLDialogElement>(null);
   const [dialogDisplay, setdDisplay] = useState("");
 
@@ -23,36 +29,40 @@ export function ComponentZone() {
 
   function checkBounds(e: any) {
     const dialogDimensions = dialog.current?.getBoundingClientRect();
-    if (
-      e.clientX < dialogDimensions.left ||
-      e.clientX > dialogDimensions.right ||
-      e.clientY < dialogDimensions.top ||
-      e.clientY > dialogDimensions.bottom
-    ) {
-      dialog.current?.close();
-      setdDisplay("");
+    if (dialogDimensions) {
+      if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+      ) {
+        dialog.current?.close();
+        setdDisplay("");
+      }
     }
   }
 
   return (
     <>
       <div className="flex flex-row justify-evenly border-b-2 border-slate-600 p-1">
-        <svg
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="h-6 w-6 cursor-help"
-          data-name="warning"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
-          />
-        </svg>
-        <h4>Zone 1</h4>
-        <span>every 3 days</span>
+        {Object.keys(scheduleMissed).length !== 0 && (
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6 cursor-help"
+            data-name="warning"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+            />
+          </svg>
+        )}
+        <h4>{name}</h4>
+        <span>{frequency}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
