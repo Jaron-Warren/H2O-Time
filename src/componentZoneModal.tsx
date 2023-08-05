@@ -65,7 +65,7 @@ export function ComponentZoneModal({ addZone }) {
           max={30}
         />
         <button
-          // onClick={addZone(zoneName, zoneFreq)}
+          onClick={() => addZone(zoneName, zoneFreq)}
           className="mx-4 rounded-md border-2 border-slate-900 bg-green-500 font-bold"
         >
           Create

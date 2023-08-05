@@ -45,7 +45,7 @@ export function ComponentZone({
   return (
     <>
       <div className="flex flex-row justify-evenly border-b-2 border-slate-600 p-1">
-        {Object.keys(scheduleMissed).length !== 0 && (
+        {scheduleMissed && Object.keys(scheduleMissed).length !== 0 && (
           <svg
             fill="none"
             viewBox="0 0 24 24"

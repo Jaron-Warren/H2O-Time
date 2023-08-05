@@ -4,6 +4,7 @@ import { ComponentSchedule } from "./componentSchedule";
 import { ComponentZone } from "./componentZone";
 import { ComponentZoneModal } from "./componentZoneModal";
 import React from "react";
+import { Temporal } from "@js-temporal/polyfill";
 
 function App() {
   const [zoneData, setZoneData] = useState(() => {
@@ -39,11 +40,16 @@ function App() {
     });
   }
 
-  function addZone(name, frequency, startDate) {
+  function addZone(name, frequency) {
     setZoneData((currentZoneData) => {
       return [
         ...currentZoneData,
-        { id: crypto.randomUUID(), name, frequency, nextOccurance: startDate },
+        {
+          id: crypto.randomUUID(),
+          name,
+          frequency,
+          nextOccurance: Temporal.Now.plainDateTimeISO(),
+        },
       ];
     });
   }
