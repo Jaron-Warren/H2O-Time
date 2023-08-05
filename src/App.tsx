@@ -45,13 +45,12 @@ function App() {
     });
   }
 
-  function editZone(id, completed) {
+  function editZone(id, name, frequency) {
     setZoneData((currentZoneData) => {
       return currentZoneData.map((Zone) => {
         if (Zone.id === id) {
-          return { ...Zone, completed };
+          return { ...Zone, name: name, frequency: frequency };
         }
-
         return Zone;
       });
     });
