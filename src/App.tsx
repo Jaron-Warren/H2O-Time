@@ -5,18 +5,18 @@ import { ComponentZone } from "./componentZone";
 import { ComponentZoneModal } from "./componentZoneModal";
 
 function App() {
-  const [scheduleData, setScheduleData] = useState(() => {
-    const localValue = localStorage.getItem("SCHEDULEDATA");
+  const [zoneData, setZoneData] = useState(() => {
+    const localValue = localStorage.getItem("ZoneData");
     if (localValue == null) return [];
     return JSON.parse(localValue);
   });
 
   useEffect(() => {
-    localStorage.setItem("SCHEDULEDATA", JSON.stringify(scheduleData));
-  }, [scheduleData]);
+    localStorage.setItem("ZoneData", JSON.stringify(zoneData));
+  }, [zoneData]);
 
   function addSchedule(title) {
-    setScheduleData((currentscheduleData) => {
+    setZoneData((currentscheduleData) => {
       return [
         ...currentscheduleData,
         { id: crypto.randomUUID(), title, completed: false },
@@ -25,7 +25,7 @@ function App() {
   }
 
   function toggleSchedule(id, completed) {
-    setScheduleData((currentscheduleData) => {
+    setZoneData((currentscheduleData) => {
       return currentscheduleData.map((Schedule) => {
         if (Schedule.id === id) {
           return { ...Schedule, completed };
@@ -37,7 +37,7 @@ function App() {
   }
 
   function addZone(title) {
-    setScheduleData((currentscheduleData) => {
+    setZoneData((currentscheduleData) => {
       return [
         ...currentscheduleData,
         { id: crypto.randomUUID(), title, completed: false },
@@ -46,7 +46,7 @@ function App() {
   }
 
   function editZone(id, completed) {
-    setScheduleData((currentscheduleData) => {
+    setZoneData((currentscheduleData) => {
       return currentscheduleData.map((Schedule) => {
         if (Schedule.id === id) {
           return { ...Schedule, completed };
@@ -58,7 +58,7 @@ function App() {
   }
 
   function deleteZone(id) {
-    setZones((currentZones) => {
+    setZoneData((currentZones) => {
       return currentZones.filter((Zone) => Zone.id !== id);
     });
   }
