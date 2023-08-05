@@ -15,11 +15,11 @@ function App() {
     localStorage.setItem("ZoneData", JSON.stringify(zoneData));
   }, [zoneData]);
 
-  function addSchedule(title) {
+  function addSchedule(zone) {
     setZoneData((currentscheduleData) => {
       return [
         ...currentscheduleData,
-        { id: crypto.randomUUID(), title, completed: false },
+        { id: crypto.randomUUID(), zone, completed: false },
       ];
     });
   }
@@ -36,23 +36,23 @@ function App() {
     });
   }
 
-  function addZone(title) {
-    setZoneData((currentscheduleData) => {
+  function addZone(name, frequency, startDate) {
+    setZoneData((currentZoneData) => {
       return [
-        ...currentscheduleData,
-        { id: crypto.randomUUID(), title, completed: false },
+        ...currentZoneData,
+        { id: crypto.randomUUID(), name, frequency, nextOccurance: startDate },
       ];
     });
   }
 
   function editZone(id, completed) {
-    setZoneData((currentscheduleData) => {
-      return currentscheduleData.map((Schedule) => {
-        if (Schedule.id === id) {
-          return { ...Schedule, completed };
+    setZoneData((currentZoneData) => {
+      return currentZoneData.map((Zone) => {
+        if (Zone.id === id) {
+          return { ...Zone, completed };
         }
 
-        return Schedule;
+        return Zone;
       });
     });
   }
@@ -100,11 +100,10 @@ function App() {
 export default App;
 
 // {
+//  id: uuid,
 // 	name: string,
 // 	frequency: number,
-// 	schedule: {
-// 		date: date
-// 	}
+// 	nextOccurance: date
 // 	scheduleMissed: {
 // 		date###: date
 // 	}
