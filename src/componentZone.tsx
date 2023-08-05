@@ -93,6 +93,12 @@ export function ComponentZone() {
         >
           Cancel
         </button>
+        <button
+          onClick={closeModal}
+          className="mx-4 rounded-md border-2 border-slate-900 bg-orange-600 font-bold"
+        >
+          Delete
+        </button>
       </dialog>
     </>
   );

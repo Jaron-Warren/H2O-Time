@@ -36,6 +36,33 @@ function App() {
     });
   }
 
+  function addZone(title) {
+    setScheduleData((currentscheduleData) => {
+      return [
+        ...currentscheduleData,
+        { id: crypto.randomUUID(), title, completed: false },
+      ];
+    });
+  }
+
+  function editZone(id, completed) {
+    setScheduleData((currentscheduleData) => {
+      return currentscheduleData.map((Schedule) => {
+        if (Schedule.id === id) {
+          return { ...Schedule, completed };
+        }
+
+        return Schedule;
+      });
+    });
+  }
+
+  function deleteZone(id) {
+    setZones((currentZones) => {
+      return currentZones.filter((Zone) => Zone.id !== id);
+    });
+  }
+
   return (
     <>
       <div className="mx-1 flex max-h-screen min-h-screen flex-col gap-2 px-2">
@@ -71,3 +98,14 @@ function App() {
 }
 
 export default App;
+
+// {
+// 	name: string,
+// 	frequency: number,
+// 	schedule: {
+// 		date: date
+// 	}
+// 	scheduleMissed: {
+// 		date###: date
+// 	}
+// }
