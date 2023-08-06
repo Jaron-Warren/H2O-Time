@@ -101,10 +101,9 @@ function App() {
             {zoneData.map((zone) => {
               return (
                 <ComponentZone
-                  name={zone.name}
-                  frequency={zone.frequency}
-                  nextOccurance={zone.nextOccurance}
-                  scheduleMissed={zone.scheduleMissed}
+                  {...zone}
+                  editZoneFunc={editZone}
+                  deleteZoneFunc={deleteZone}
                   key={zone.id}
                 />
               );

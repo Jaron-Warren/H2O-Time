@@ -7,7 +7,11 @@ export function ComponentZone({
   frequency,
   nextOccurance,
   scheduleMissed,
+  editZoneFunc,
+  deleteZoneFunc,
 }) {
+  const [zoneName, setZoneName] = useState(name);
+  const [zoneFreq, setZoneFreq] = useState(frequency);
   let dialog = useRef<HTMLDialogElement>(null);
   const [dialogDisplay, setdDisplay] = useState("");
 
@@ -17,6 +21,7 @@ export function ComponentZone({
   }
 
   function saveModal() {
+    editZoneFunc(name, frequency);
     dialog.current?.close();
     setdDisplay("");
   }
@@ -104,7 +109,7 @@ export function ComponentZone({
           Cancel
         </button>
         <button
-          onClick={closeModal}
+          onClick={() => deleteZoneFunc(id)}
           className="mx-4 rounded-md border-2 border-slate-900 bg-orange-600 font-bold"
         >
           Delete
