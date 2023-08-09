@@ -3,6 +3,7 @@ import "./componentZone.css";
 import React from "react";
 
 export function ComponentZone({
+  id,
   name,
   frequency,
   nextOccurance,
@@ -21,9 +22,8 @@ export function ComponentZone({
   }
 
   function saveModal() {
-    editZoneFunc(name, frequency);
-    dialog.current?.close();
-    setdDisplay("");
+    editZoneFunc(id, zoneName, zoneFreq);
+    closeModal();
   }
 
   function closeModal() {
@@ -93,9 +93,22 @@ export function ComponentZone({
         className={`${dialogDisplay} flex-col justify-center gap-2`}
       >
         <div className="font-bold">Zone name:</div>
-        <input type="text" minLength={3} maxLength={15} />
+        <input
+          value={zoneName}
+          onChange={(e) => setZoneName(e.target.value)}
+          type="text"
+          minLength={3}
+          maxLength={15}
+        />
         <div className="font-bold">Frequency in days:</div>
-        <input type="number" name="Frequency in days" min={1} max={30} />
+        <input
+          value={zoneFreq}
+          onChange={(e) => setZoneFreq(parseInt(e.target.value))}
+          type="number"
+          name="Frequency in days"
+          min={1}
+          max={30}
+        />
         <button
           onClick={saveModal}
           className="mx-4 rounded-md border-2 border-slate-900 bg-green-500 font-bold"

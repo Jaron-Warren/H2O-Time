@@ -18,6 +18,13 @@ export function ComponentZoneModal({ addZone }) {
     setdDisplay("");
   }
 
+  function createZone(zoneName, zoneFreq) {
+    addZone(zoneName, zoneFreq);
+    setZoneName("");
+    setZoneFreq(1);
+    closeModal();
+  }
+
   function checkBounds(e: any) {
     const dialogDimensions = dialog.current?.getBoundingClientRect();
     if (dialogDimensions) {
@@ -65,7 +72,7 @@ export function ComponentZoneModal({ addZone }) {
           max={30}
         />
         <button
-          onClick={() => addZone(zoneName, zoneFreq)}
+          onClick={() => createZone(zoneName, zoneFreq)}
           className="mx-4 rounded-md border-2 border-slate-900 bg-green-500 font-bold"
         >
           Create

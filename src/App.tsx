@@ -97,8 +97,8 @@ function App() {
         </div>
         <div className="mb-3 grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="m-2 flex flex-col gap-y-3">
-            {zoneData.length === 0 && <div>Create a zone to get started!</div>}
-            {zoneData.map((zone) => {
+            {zoneData?.length === 0 && <div>Create a zone to get started!</div>}
+            {zoneData?.map((zone) => {
               return (
                 <ComponentZone
                   {...zone}
