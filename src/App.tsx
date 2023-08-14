@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { ComponentSchedule } from "./componentSchedule";
+import { ComponentScheduleDetails } from "./componentScheduleDetails";
 import { ComponentZone } from "./componentZone";
 import { ComponentZoneModal } from "./componentZoneModal";
-import React from "react";
+import { ComponentScheduleCalendar } from "./componentScheduleCalendar";
 import { Temporal } from "@js-temporal/polyfill";
 
 function App() {
@@ -86,7 +86,8 @@ function App() {
         </div>
         <div className="grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-            <ComponentSchedule />
+            <ComponentScheduleDetails />
+            <ComponentScheduleCalendar />
           </div>
         </div>
         <div id="zones">
