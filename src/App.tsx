@@ -84,8 +84,8 @@ function App() {
         <div id="schedule">
           <span className="whiteShadow font-bold">Schedule:</span>
         </div>
-        <div className="grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <div className="rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
+          <div className="grid grid-cols-1 sm:grid-cols-2">
             <ComponentScheduleDetails />
             <ComponentScheduleCalendar />
           </div>
