@@ -6,8 +6,18 @@ import { ComponentZoneModal } from "./componentZoneModal";
 import { ComponentScheduleCalendar } from "./componentScheduleCalendar";
 import { Temporal } from "@js-temporal/polyfill";
 
+type zoneData = {
+  id: string;
+  name: string;
+  frequency: number;
+  nextOccurance: Date;
+  scheduleMissed: {
+    date: any;
+  };
+};
+
 function App() {
-  const [zoneData, setZoneData] = useState(() => {
+  const [zoneData, setZoneData] = useState<any>(() => {
     const localValue = localStorage.getItem("ZoneData");
     if (localValue == null) {
       return [];
@@ -17,9 +27,19 @@ function App() {
 
   const [activeDate, changeActiveDate] = useState<Date>(new Date());
 
+  const [activeDateSchedule, changeActiveDateSchedule] = useState<any>(
+    zoneData.filter((zone) => zone.nextOccurance == activeDate)
+  );
+
   useEffect(() => {
     localStorage.setItem("ZoneData", JSON.stringify(zoneData));
   }, [zoneData]);
+
+  useEffect(() => {
+    changeActiveDateSchedule(
+      zoneData.filter((zone) => zone.nextOccurance == activeDate)
+    );
+  }, [activeDate]);
 
   function addSchedule(zone) {
     setZoneData((currentscheduleData) => {
@@ -88,7 +108,10 @@ function App() {
         </div>
         <div className="rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="grid grid-cols-1 sm:grid-cols-2">
-            <ComponentScheduleDetails />
+            <ComponentScheduleDetails
+              activeDateSchedule={activeDateSchedule}
+              changeActiveDate={changeActiveDate}
+            />
             <ComponentScheduleCalendar
               activeDate={activeDate}
               changeActiveDate={changeActiveDate}
