@@ -15,6 +15,8 @@ function App() {
     return JSON.parse(localValue);
   });
 
+  const [activeDate, changeActiveDate] = useState<Date>(new Date());
+
   useEffect(() => {
     localStorage.setItem("ZoneData", JSON.stringify(zoneData));
   }, [zoneData]);
@@ -87,7 +89,10 @@ function App() {
         <div className="rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="grid grid-cols-1 sm:grid-cols-2">
             <ComponentScheduleDetails />
-            <ComponentScheduleCalendar />
+            <ComponentScheduleCalendar
+              activeDate={activeDate}
+              changeActiveDate={changeActiveDate}
+            />
           </div>
         </div>
         <div id="zones">
