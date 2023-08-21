@@ -111,6 +111,7 @@ function App() {
             <ComponentScheduleDetails
               activeDateSchedule={activeDateSchedule}
               changeActiveDate={changeActiveDate}
+              activeDate={activeDate}
             />
             <ComponentScheduleCalendar
               activeDate={activeDate}
