@@ -3,9 +3,9 @@ import "./componentScheduleDetailsDate.css";
 export function ComponentScheduleDetailsDate() {
   return (
     <>
-      <li className="italic">
+      <li className="border-b-2 pb-1 italic">
         zone 1{" "}
-        <span className="float-right cursor-pointer border border-slate-600 bg-slate-400 px-1">
+        <span className="float-right cursor-pointer border border-slate-600 bg-slate-300 px-1">
           <svg
             fill="none"
             viewBox="0 0 24 24"
