@@ -127,7 +127,13 @@ function App() {
         </div>
         <div className="mb-3 grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="m-2 flex flex-col gap-y-3">
+            <div className="flex flex-row justify-evenly border-b-2 border-slate-600 p-1">
+              <span>Zone Name</span>
+              <span>Frequency</span>
+              <span></span>
+            </div>
             {zoneData?.length === 0 && <div>Create a zone to get started!</div>}
+
             {zoneData?.map((zone) => {
               return (
                 <ComponentZone
