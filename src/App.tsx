@@ -41,15 +41,6 @@ function App() {
     );
   }, [activeDate]);
 
-  function addSchedule(zone) {
-    setZoneData((currentscheduleData) => {
-      return [
-        ...currentscheduleData,
-        { id: crypto.randomUUID(), zone, completed: false },
-      ];
-    });
-  }
-
   function toggleSchedule(id, completed) {
     setZoneData((currentscheduleData) => {
       return currentscheduleData.map((Schedule) => {
@@ -70,7 +61,8 @@ function App() {
           id: crypto.randomUUID(),
           name,
           frequency,
-          nextOccurance: Temporal.Now.plainDateTimeISO(),
+          nextOccurance: Temporal.Now.plainDateISO(),
+          scheduleMissed: {},
         },
       ];
     });
@@ -130,10 +122,10 @@ function App() {
             <div className="flex flex-row justify-evenly border-b-2 border-slate-600 p-1">
               <span>Zone Name</span>
               <span>Frequency</span>
+              <span>Next Occurance</span>
               <span></span>
             </div>
             {zoneData?.length === 0 && <div>Create a zone to get started!</div>}
-
             {zoneData?.map((zone) => {
               return (
                 <ComponentZone
@@ -152,13 +144,3 @@ function App() {
 }
 
 export default App;
-
-// {
-//  id: uuid,
-// 	name: string,
-// 	frequency: number,
-// 	nextOccurance: date
-// 	scheduleMissed: {
-// 		date###: date
-// 	}
-// }

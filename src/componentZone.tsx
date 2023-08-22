@@ -68,6 +68,7 @@ export function ComponentZone({
         )}
         <h4>{name}</h4>
         <span>{frequency}</span>
+        <span>{nextOccurance.toString()}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
