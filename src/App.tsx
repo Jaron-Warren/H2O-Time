@@ -27,7 +27,7 @@ function App() {
   const [activeDate, changeActiveDate] = useState<Date>(new Date());
 
   const [activeDateSchedule, changeActiveDateSchedule] = useState<any>(
-    zoneData.filter((zone) => zone.nextOccurance == activeDate)
+    zoneData.filter((zone) => zone.nextOccurance === activeDate.toDateString())
   );
 
   useEffect(() => {
@@ -36,9 +36,11 @@ function App() {
 
   useEffect(() => {
     changeActiveDateSchedule(
-      zoneData.filter((zone) => zone.nextOccurance == activeDate)
+      zoneData.filter(
+        (zone) => zone.nextOccurance === activeDate.toDateString()
+      )
     );
-  }, [activeDate]);
+  }, [activeDate, zoneData]);
 
   function toggleSchedule(id, completed) {
     setZoneData((currentscheduleData) => {

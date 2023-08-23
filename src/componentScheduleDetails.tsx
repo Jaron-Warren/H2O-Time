@@ -17,8 +17,10 @@ export function ComponentScheduleDetails({
         </button>
         <h4 className="text-center underline">{activeDate.toDateString()}</h4>
         <ul className="list-inside list-disc py-1">
-          {activeDateSchedule?.map(() => {
-            <ComponentScheduleDetailsDate />;
+          {activeDateSchedule?.map((zone) => {
+            return (
+              <ComponentScheduleDetailsDate name={zone.name} key={zone.id} />
+            );
           })}
         </ul>
       </div>

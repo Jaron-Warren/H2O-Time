@@ -1,10 +1,10 @@
 import "./componentScheduleDetailsDate.css";
 
-export function ComponentScheduleDetailsDate() {
+export function ComponentScheduleDetailsDate({ name }) {
   return (
     <>
       <li className="border-b-2 pb-1 italic">
-        zone 1{" "}
+        {name}
         <span className="float-right cursor-pointer border border-slate-600 bg-slate-300 px-1">
           <svg
             fill="none"
