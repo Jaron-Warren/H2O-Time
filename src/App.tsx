@@ -4,7 +4,6 @@ import { ComponentScheduleDetails } from "./componentScheduleDetails";
 import { ComponentZone } from "./componentZone";
 import { ComponentZoneModal } from "./componentZoneModal";
 import { ComponentScheduleCalendar } from "./componentScheduleCalendar";
-import { Temporal } from "@js-temporal/polyfill";
 
 type zoneData = {
   id: string;
@@ -61,7 +60,7 @@ function App() {
           id: crypto.randomUUID(),
           name,
           frequency,
-          nextOccurance: Temporal.Now.plainDateISO(),
+          nextOccurance: new Date().toDateString(),
           scheduleMissed: {},
         },
       ];
