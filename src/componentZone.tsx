@@ -14,10 +14,8 @@ export function ComponentZone({
   const [zoneName, setZoneName] = useState(name);
   const [zoneFreq, setZoneFreq] = useState(frequency);
   let dialog = useRef<HTMLDialogElement>(null);
-  const [dialogDisplay, setdDisplay] = useState("");
 
   function showModal() {
-    setdDisplay("display: flex");
     dialog.current?.showModal();
   }
 
@@ -27,9 +25,7 @@ export function ComponentZone({
   }
 
   function closeModal() {
-    // const dialog = document.getElementById("zoneModal") as HTMLDialogElement;
     dialog.current?.close();
-    setdDisplay("");
   }
 
   function checkBounds(e: any) {
@@ -42,7 +38,6 @@ export function ComponentZone({
         e.clientY > dialogDimensions.bottom
       ) {
         dialog.current?.close();
-        setdDisplay("");
       }
     }
   }
@@ -68,7 +63,7 @@ export function ComponentZone({
         )}
         <h4>{name}</h4>
         <span>{frequency}</span>
-        <span>{nextOccurance.toString()}</span>
+        <span>{nextOccurance.toString().slice(0, -4)}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -91,43 +86,45 @@ export function ComponentZone({
         id="editModal"
         ref={dialog}
         onClick={(event) => checkBounds(event)}
-        className={`${dialogDisplay} flex-col justify-center gap-2`}
       >
-        <div className="font-bold">Zone name:</div>
-        <input
-          value={zoneName}
-          onChange={(e) => setZoneName(e.target.value)}
-          type="text"
-          minLength={3}
-          maxLength={15}
-        />
-        <div className="font-bold">Frequency in days:</div>
-        <input
-          value={zoneFreq}
-          onChange={(e) => setZoneFreq(parseInt(e.target.value))}
-          type="number"
-          name="Frequency in days"
-          min={1}
-          max={30}
-        />
-        <button
-          onClick={saveModal}
-          className="mx-4 rounded-md border-2 border-slate-900 bg-green-500 font-bold"
-        >
-          Save Changes
-        </button>
-        <button
-          onClick={closeModal}
-          className="mx-4 rounded-md border-2 border-slate-900 bg-red-500 font-bold"
-        >
-          Cancel
-        </button>
-        <button
-          onClick={() => deleteZoneFunc(id)}
-          className="mx-4 rounded-md border-2 border-slate-900 bg-orange-600 font-bold"
-        >
-          Delete
-        </button>
+        <form method="dialog" className="flex flex-col justify-center gap-2">
+          <div className="font-bold">Zone name:</div>
+          <input
+            value={zoneName}
+            onChange={(e) => setZoneName(e.target.value)}
+            type="text"
+            minLength={3}
+            maxLength={15}
+          />
+          <div className="font-bold">Frequency in days:</div>
+          <input
+            value={zoneFreq}
+            onChange={(e) => setZoneFreq(parseInt(e.target.value))}
+            type="number"
+            name="Frequency in days"
+            min={1}
+            max={30}
+          />
+          <button
+            onClick={saveModal}
+            type="submit"
+            className="mx-4 rounded-md border-2 border-slate-900 bg-green-500 font-bold"
+          >
+            Save Changes
+          </button>
+          <button
+            onClick={closeModal}
+            className="mx-4 rounded-md border-2 border-slate-900 bg-red-500 font-bold"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={() => deleteZoneFunc(id)}
+            className="mx-4 rounded-md border-2 border-slate-900 bg-orange-600 font-bold"
+          >
+            Delete
+          </button>
+        </form>
       </dialog>
     </>
   );
