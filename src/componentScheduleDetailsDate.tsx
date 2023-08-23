@@ -1,11 +1,14 @@
 import "./componentScheduleDetailsDate.css";
 
-export function ComponentScheduleDetailsDate({ name }) {
+export function ComponentScheduleDetailsDate({ id, name, toggleSchedule }) {
   return (
     <>
       <li className="border-b-2 pb-1 italic">
         {name}
-        <span className="float-right cursor-pointer border border-slate-600 bg-slate-300 px-1">
+        <span
+          className="float-right cursor-pointer border border-slate-600 bg-slate-300 px-1"
+          onClick={() => toggleSchedule(id)}
+        >
           <svg
             fill="none"
             viewBox="0 0 24 24"

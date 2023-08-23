@@ -16,40 +16,55 @@ type zoneData = {
 };
 
 function App() {
+  //all zone data
   const [zoneData, setZoneData] = useState<any>(() => {
     const localValue = localStorage.getItem("ZoneData");
     if (localValue == null) {
       return [];
     }
-    return JSON.parse(localValue);
+    const storedData = JSON.parse(localValue);
+    return storedData.map((storedzone) => {
+      return {
+        ...storedzone,
+        nextOccurance: new Date(storedzone.nextOccurance),
+      };
+    });
   });
 
+  //selected calendar day
   const [activeDate, changeActiveDate] = useState<Date>(new Date());
 
+  //zone data for selected day
   const [activeDateSchedule, changeActiveDateSchedule] = useState<any>(
-    zoneData.filter((zone) => zone.nextOccurance === activeDate.toDateString())
+    zoneData.filter(
+      (zone) => zone.nextOccurance.toDateString() === activeDate.toDateString()
+    )
   );
 
+  //update local storage
   useEffect(() => {
     localStorage.setItem("ZoneData", JSON.stringify(zoneData));
   }, [zoneData]);
 
+  //update zone data for selected day
   useEffect(() => {
     changeActiveDateSchedule(
       zoneData.filter(
-        (zone) => zone.nextOccurance === activeDate.toDateString()
+        (zone) =>
+          zone.nextOccurance.toDateString() === activeDate.toDateString()
       )
     );
   }, [activeDate, zoneData]);
 
-  function toggleSchedule(id, completed) {
-    setZoneData((currentscheduleData) => {
-      return currentscheduleData.map((Schedule) => {
-        if (Schedule.id === id) {
-          return { ...Schedule, completed };
+  function toggleSchedule(id) {
+    setZoneData((currentZoneData) => {
+      return currentZoneData.map((zone) => {
+        if (zone.id === id) {
+          let oldDate = zone.nextOccurance;
+          return { ...zone, nextOccurance: new Date() };
         }
 
-        return Schedule;
+        return zone;
       });
     });
   }
@@ -62,7 +77,7 @@ function App() {
           id: crypto.randomUUID(),
           name,
           frequency,
-          nextOccurance: new Date().toDateString(),
+          nextOccurance: new Date(),
           scheduleMissed: {},
         },
       ];
@@ -105,6 +120,7 @@ function App() {
               activeDateSchedule={activeDateSchedule}
               changeActiveDate={changeActiveDate}
               activeDate={activeDate}
+              toggleSchedule={toggleSchedule}
             />
             <ComponentScheduleCalendar
               activeDate={activeDate}

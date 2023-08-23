@@ -5,6 +5,7 @@ export function ComponentScheduleDetails({
   activeDateSchedule,
   changeActiveDate,
   activeDate,
+  toggleSchedule,
 }) {
   return (
     <>
@@ -19,7 +20,12 @@ export function ComponentScheduleDetails({
         <ul className="list-inside list-disc py-1">
           {activeDateSchedule?.map((zone) => {
             return (
-              <ComponentScheduleDetailsDate name={zone.name} key={zone.id} />
+              <ComponentScheduleDetailsDate
+                name={zone.name}
+                id={zone.id}
+                key={zone.id}
+                toggleSchedule={toggleSchedule}
+              />
             );
           })}
         </ul>
