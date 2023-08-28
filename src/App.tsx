@@ -105,28 +105,24 @@ function App() {
     <>
       <div className="mx-1 flex max-h-screen min-h-screen flex-col gap-2 px-2">
         <header className="mt-3">
-          <div className="mx-12 rounded-md bg-slate-500 p-2">
-            <h1 className="text-center text-lg font-extrabold text-sky-400 underline decoration-wavy">
-              H2O Time
-            </h1>
-          </div>
+          <h1 className="title text-center text-lg font-extrabold text-sky-400 underline decoration-wavy">
+            <span className="whiteShadow">H2O Time</span>
+          </h1>
         </header>
         <div id="schedule">
           <span className="whiteShadow font-bold">Schedule:</span>
         </div>
-        <div className="rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
-          <div className="grid grid-cols-1 sm:grid-cols-2">
-            <ComponentScheduleDetails
-              activeDateSchedule={activeDateSchedule}
-              changeActiveDate={changeActiveDate}
-              activeDate={activeDate}
-              toggleSchedule={toggleSchedule}
-            />
-            <ComponentScheduleCalendar
-              activeDate={activeDate}
-              changeActiveDate={changeActiveDate}
-            />
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2">
+          <ComponentScheduleDetails
+            activeDateSchedule={activeDateSchedule}
+            changeActiveDate={changeActiveDate}
+            activeDate={activeDate}
+            toggleSchedule={toggleSchedule}
+          />
+          <ComponentScheduleCalendar
+            activeDate={activeDate}
+            changeActiveDate={changeActiveDate}
+          />
         </div>
         <div id="zones">
           <div className="flex flex-row">
