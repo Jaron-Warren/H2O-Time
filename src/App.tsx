@@ -56,12 +56,18 @@ function App() {
     );
   }, [activeDate, zoneData]);
 
+  //clicking checkmark active day
   function toggleSchedule(id) {
     setZoneData((currentZoneData) => {
       return currentZoneData.map((zone) => {
         if (zone.id === id) {
-          let oldDate = zone.nextOccurance;
-          return { ...zone, nextOccurance: new Date() };
+          const newDate = new Date();
+          const skipDays = newDate.getDate() + zone.frequency;
+          newDate.setDate(skipDays);
+          return {
+            ...zone,
+            nextOccurance: newDate,
+          };
         }
 
         return zone;
