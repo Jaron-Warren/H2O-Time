@@ -6,7 +6,7 @@ export function ComponentScheduleDetailsDate({ id, name, toggleSchedule }) {
       <li className="border-b-2 pb-1 italic">
         {name}
         <span
-          className="float-right cursor-pointer border border-slate-600 bg-slate-300 px-1"
+          className="float-right cursor-pointer border border-slate-600 bg-green-600 px-1"
           onClick={() => toggleSchedule(id)}
         >
           <svg

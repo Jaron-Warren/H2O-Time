@@ -70,7 +70,7 @@ export function ComponentZoneModal({ addZone }) {
           <button
             onClick={() => createZone(zoneName, zoneFreq)}
             type="submit"
-            className="mx-4 rounded-md border-2 border-slate-900 bg-green-500 font-bold"
+            className="mx-4 rounded-md border-2 border-slate-900 bg-green-600 font-bold"
           >
             Create
           </button>

@@ -108,7 +108,7 @@ export function ComponentZone({
           <button
             onClick={saveModal}
             type="submit"
-            className="mx-4 rounded-md border-2 border-slate-900 bg-green-500 font-bold"
+            className="mx-4 rounded-md border-2 border-slate-900 bg-green-600 font-bold"
           >
             Save Changes
           </button>
