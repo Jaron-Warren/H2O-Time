@@ -109,7 +109,7 @@ function App() {
 
   return (
     <>
-      <div className="mx-1 flex max-h-screen min-h-screen flex-col gap-2 px-2">
+      <div className="mx-1 flex max-h-screen min-h-screen flex-col gap-2">
         <header className="mt-3">
           <h1 className="title text-center text-lg font-extrabold text-sky-400 underline decoration-wavy">
             <span className="whiteShadow">H2O Time</span>
@@ -136,25 +136,32 @@ function App() {
             <ComponentZoneModal addZone={addZone} />
           </div>
         </div>
-        <div className="mb-3 grow rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
-          <div className="m-2 flex flex-col gap-y-3">
-            <div className="flex flex-row justify-evenly border-b-2 border-slate-600 p-1">
-              <span>Zone Name</span>
-              <span>Frequency</span>
-              <span>Next Occurance</span>
-              <span></span>
+        <div className="mb-3 rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
+          <div className="table w-full">
+            <div className="table-header-group border-b-2 border-slate-600 p-1">
+              <div className="table-row">
+                <div className="table-cell text-center">!</div>
+                <div className="table-cell text-center">Name</div>
+                <div className="table-cell text-center">Freq</div>
+                <div className="table-cell text-center">Next Date</div>
+                <div className="table-cell text-center">Edit</div>
+              </div>
             </div>
-            {zoneData?.length === 0 && <div>Create a zone to get started!</div>}
-            {zoneData?.map((zone) => {
-              return (
-                <ComponentZone
-                  {...zone}
-                  editZoneFunc={editZone}
-                  deleteZoneFunc={deleteZone}
-                  key={zone.id}
-                />
-              );
-            })}
+            <div className="table-row-group">
+              {zoneData?.length === 0 && (
+                <div>Create a zone to get started!</div>
+              )}
+              {zoneData?.map((zone) => {
+                return (
+                  <ComponentZone
+                    {...zone}
+                    editZoneFunc={editZone}
+                    deleteZoneFunc={deleteZone}
+                    key={zone.id}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

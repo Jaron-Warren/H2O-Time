@@ -56,7 +56,7 @@ export function ComponentZoneModal({ addZone }) {
             onChange={(e) => setZoneName(e.target.value)}
             type="text"
             minLength={3}
-            maxLength={15}
+            maxLength={9}
           />
           <div className="font-bold">Frequency in days:</div>
           <input
