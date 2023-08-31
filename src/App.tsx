@@ -5,15 +5,15 @@ import { ComponentZone } from "./componentZone";
 import { ComponentZoneModal } from "./componentZoneModal";
 import { ComponentScheduleCalendar } from "./componentScheduleCalendar";
 
-type zoneData = {
-  id: string;
-  name: string;
-  frequency: number;
-  nextOccurance: Date;
-  scheduleMissed: {
-    date: any;
-  };
-};
+// type zoneData = {
+//   id: string;
+//   name: string;
+//   frequency: number;
+//   nextOccurance: Date;
+//   scheduleMissed: {
+//     date: any;
+//   };
+// };
 
 function App() {
   //all zone data

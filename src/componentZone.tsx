@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import "./componentZone.css";
-import React from "react";
 
 export function ComponentZone({
   id,
