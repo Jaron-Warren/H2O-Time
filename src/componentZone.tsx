@@ -65,7 +65,7 @@ export function ComponentZone({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="table-cell cursor-help"
+            className="table-cell cursor-help fill-red-500 pl-1"
             data-name="warning"
           >
             <path
