@@ -111,12 +111,12 @@ function App() {
     <>
       <div className="mx-1 flex max-h-screen min-h-screen flex-col gap-2">
         <header className="mt-3">
-          <h1 className="title text-center text-lg font-extrabold text-sky-400 underline decoration-wavy">
-            <span className="whiteShadow">H2O Time</span>
+          <h1 className="title text-center text-6xl font-extrabold text-blue-700">
+            <span className="">H2O Time</span>
           </h1>
         </header>
         <div id="schedule">
-          <span className="whiteShadow font-bold">Schedule:</span>
+          <span className="font-bold">Schedule:</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2">
           <ComponentScheduleDetails
@@ -132,19 +132,29 @@ function App() {
         </div>
         <div id="zones">
           <div className="flex flex-row">
-            <span className="whiteShadow mr-4 font-bold">Zones:</span>
+            <span className="mr-4 font-bold">Zones:</span>
             <ComponentZoneModal addZone={addZone} />
           </div>
         </div>
-        <div className="mb-3 rounded-md border border-slate-600 bg-gradient-to-r from-cyan-500 to-blue-500">
+        <div className="mb-3 rounded-md border-2 border-slate-800 bg-slate-50 p-2">
           <div className="table w-full">
             <div className="table-header-group border-b-2 border-slate-600 p-1">
               <div className="table-row">
-                <div className="table-cell text-center">!</div>
-                <div className="table-cell text-center">Name</div>
-                <div className="table-cell text-center">Freq</div>
-                <div className="table-cell text-center">Next Date</div>
-                <div className="table-cell text-center">Edit</div>
+                <div className="table-cell text-center font-extrabold underline">
+                  !
+                </div>
+                <div className="table-cell text-center font-bold underline">
+                  Name
+                </div>
+                <div className="table-cell text-center font-bold underline">
+                  Freq
+                </div>
+                <div className="table-cell text-center font-bold underline">
+                  Next Date
+                </div>
+                <div className="table-cell text-center font-bold underline">
+                  Edit
+                </div>
               </div>
             </div>
             <div className="table-row-group">
