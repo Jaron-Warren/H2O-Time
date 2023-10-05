@@ -6,7 +6,6 @@ export function ComponentZone({
   name,
   frequency,
   nextOccurance,
-  scheduleMissed,
   editZoneFunc,
   deleteZoneFunc,
 }) {
@@ -41,10 +40,20 @@ export function ComponentZone({
     }
   }
 
+  function pastDue(nextOccurance) {
+    const today = new Date()
+    if (nextOccurance.getFullYear() >= today.getFullYear() && nextOccurance.getMonth() >= today.getMonth() && nextOccurance.getDate() >= today.getDate()) {
+      return false
+    }
+    else {
+      return true
+    }
+  }
+
   return (
     <>
       <div className="table-row place-items-center border-b-2 border-slate-600 p-1">
-        {scheduleMissed && Object.keys(scheduleMissed).length == 0 && (
+        {nextOccurance && !pastDue(nextOccurance) && (
           <div className="flex justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +67,7 @@ export function ComponentZone({
             </svg>
           </div>
         )}
-        {scheduleMissed && Object.keys(scheduleMissed).length !== 0 && (
+        {nextOccurance && pastDue(nextOccurance) && (
           <svg
             fill="none"
             viewBox="0 0 24 24"
