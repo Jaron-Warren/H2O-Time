@@ -41,13 +41,27 @@ export function ComponentZone({
   }
 
   function pastDue(nextOccurance) {
-    const today = new Date()
-    if (nextOccurance.getFullYear() >= today.getFullYear() && nextOccurance.getMonth() >= today.getMonth() && nextOccurance.getDate() >= today.getDate()) {
-      return false
+    const today = new Date();
+    if (
+      nextOccurance.getFullYear() >= today.getFullYear() &&
+      nextOccurance.getMonth() >= today.getMonth() &&
+      nextOccurance.getDate() >= today.getDate()
+    ) {
+      return false;
+    } else {
+      return true;
     }
-    else {
-      return true
+  }
+
+  function daysPastDue(oldDate: Date) {
+    if (typeof oldDate != "object") {
+      console.log("daysPastDue error");
+      return;
     }
+    const today = new Date();
+    const daysElasped =
+      (today.getTime() - oldDate.getTime()) / 1000 / 60 / 60 / 24;
+    return Math.floor(daysElasped);
   }
 
   return (
@@ -57,8 +71,8 @@ export function ComponentZone({
           <div className="flex justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="30"
+              height="30"
               viewBox="0 0 24 24"
               className="table-cell fill-green-800 pl-1"
               data-name="smiley"
@@ -68,20 +82,27 @@ export function ComponentZone({
           </div>
         )}
         {nextOccurance && pastDue(nextOccurance) && (
-          <svg
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="table-cell cursor-help fill-red-500 pl-1"
-            data-name="warning"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
-            />
-          </svg>
+          <div className="flex justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="tooltip table-cell cursor-help fill-red-500 pl-1"
+              data-name="warning"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+              />
+            </svg>
+            <div className="tooltiptext">
+              <span>{daysPastDue(nextOccurance)} days past due</span>
+            </div>
+          </div>
         )}
         <h4 className=" table-cell text-center">{name}</h4>
         <span className=" table-cell text-center">{frequency}</span>
