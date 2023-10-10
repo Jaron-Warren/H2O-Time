@@ -5,19 +5,16 @@ import { ComponentZone } from "./componentZone";
 import { ComponentZoneModal } from "./componentZoneModal";
 import { ComponentScheduleCalendar } from "./componentScheduleCalendar";
 
-// type zoneData = {
-//   id: string;
-//   name: string;
-//   frequency: number;
-//   nextOccurance: Date;
-//   scheduleMissed: {
-//     date: any;
-//   };
-// };
+interface zoneData {
+  id: string;
+  name: string;
+  frequency: number;
+  nextOccurance: Date;
+}
 
 function App() {
   //all zone data
-  const [zoneData, setZoneData] = useState<any>(() => {
+  const [zoneData, setZoneData] = useState<zoneData | any>(() => {
     const localValue = localStorage.getItem("ZoneData");
     if (localValue == null) {
       return [];
@@ -84,7 +81,6 @@ function App() {
           name,
           frequency,
           nextOccurance: new Date(),
-          scheduleMissed: {},
         },
       ];
     });
@@ -161,7 +157,7 @@ function App() {
               {zoneData?.length === 0 && (
                 <div>Create a zone to get started!</div>
               )}
-              {zoneData?.map((zone) => {
+              {zoneData?.map((zone: zoneData) => {
                 return (
                   <ComponentZone
                     {...zone}
