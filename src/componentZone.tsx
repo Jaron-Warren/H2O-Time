@@ -143,7 +143,7 @@ export function ComponentZone({
             onChange={(e) => setZoneName(e.target.value)}
             type="text"
             minLength={3}
-            maxLength={15}
+            maxLength={12}
           />
           <div className="font-bold">Frequency in days:</div>
           <input
